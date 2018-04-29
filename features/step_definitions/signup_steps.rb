@@ -1,38 +1,53 @@
 When(/^I am on Appimation home page/) do
   visit('/')
   unless find(:css, '#logo').visible?
-    raise "Logo not visible"
+    raise "Logo is not visible"
   end
 end
 
-
-
-When(/^I open Try now/) do
-  find(:css, '#start_button').click
+#1.
+When(/^I open Sign Up/) do
+  find(:css, '#signup-b').click
   unless find(:css, '#signup').visible?
-    raise "element not visible"
+    raise "Element is not visible"
   end
 end
 
+Then("I enter {string}, {string} and {string} in Sign Up form") do |email, password, name|
+  find(:css, '#signup input[name="login"]').send_keys(email)
+  find(:css, 'input[name="password1"]').send_keys(password)
+  find(:css, 'input[name="password2"]').send_keys(password)
+  find(:css, 'input[name="project_name"]').send_keys(name)
+  sleep(1)
+end
 
-Then("I close Try now") do
+Then("I close Sign Up") do
   find(:css, '#signup .closecross').click
-end
-
-
-When("I enter {string} and {string} in name in contact us") do |name, name2|
-  unless find(:css, '#name').visible?
-    raise "name not visible"
+  #find(:css, '#signup').should_not be_visible
+  unless find(:css, '#signup').visible?
+    raise "Element is not visible"
   end
-  find(:css, '#name').send_keys(name)
-  sleep(2)
-  find(:css, '#name').native.clear
-
-  find(:css, '#name').send_keys(name2)
-  sleep(2)
 end
 
 
 
+#2.
+When(/^I open Sign In/) do
+  find(:css, '#login-b').click
+  unless find(:css, '#login').visible?
+    raise "Element is not visible"
+  end
+end
 
+Then("I enter invalid information {string} and {string}") do |login, password|
+  find(:css, '#login input[name="login"]').send_keys(login)
+  find(:css, 'input[name="password"]').send_keys(password)
+  sleep(1)
+end
 
+Then("I try to login") do
+  find(:css, '.button-block').click
+  unless find(:xpath, "//span[contains(text(), 'Username or password is not correct')]")
+    raise "Element is not visible"
+  end
+end

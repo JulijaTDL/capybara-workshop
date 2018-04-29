@@ -2,9 +2,12 @@ Feature: Demo Feature
 
     Scenario: Open SignUp Page
         Given I am on Appimation home page
-        When I open Try now
-        Then I close Try now
+        When I open Sign Up
+        Then I enter "JulijaTDL@gmail.com", "Parole" and "Capybara-Workshop" in Sign Up form
+        Then I close Sign Up
 
-    Scenario: I can send contact us message
+    Scenario: Open SignIp Page
         Given I am on Appimation home page
-        When I enter "lalalalla" and "namemname" in name in contact us
+        When I open Sign In
+        Then I enter invalid information "JulijaTDL@gmail.com" and "Parole"
+        Then I try to login
