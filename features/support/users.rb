@@ -1,5 +1,6 @@
 require 'date'
 module Users
+<<<<<<< HEAD
   def Users.signup_user
     @signup_user ||= User.new(email: 'test@test.com', password: 'passworddemo')
     @signup_user
@@ -19,3 +20,7 @@ class User
   end
 end
 
+=======
+
+end
+>>>>>>> 37bf0fb56a2394df6eadaef4b2e58b86649e3c32
