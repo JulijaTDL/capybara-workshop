@@ -1,10 +1,13 @@
 Feature: Demo Feature
 
-    Scenario: Open SignUp Page
+   Scenario: Open Try now Page
         Given I am on Appimation home page
         When I open Try now
+        Then I enter information in Try now form
         Then I close Try now
 
-    Scenario: I can send contact us message
+   Scenario: Open SignIn Page
         Given I am on Appimation home page
-        When I enter "lalalalla" and "namemname" in name in contact us
+        When I open Sign In
+        Then I enter invalid information
+        Then I try to login

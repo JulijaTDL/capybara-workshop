@@ -1,26 +1,23 @@
 require 'date'
 module Users
-<<<<<<< HEAD
-  def Users.signup_user
-    @signup_user ||= User.new(email: 'test@test.com', password: 'passworddemo')
-    @signup_user
+  def Users.try_now_form
+    @try_now_form ||= User.new(email: 'JulijaTDL@gmail.com', pas1: 'Parole', pas2: 'Parole', projName: 'Capybara - Workshop')
+    @try_now_form
   end
-    def Users.signup_user_without_mail
-    @signup_user ||= User.new(email: '', password: 'passworddemo')
-    @signup_user
+
+  def Users.sign_in_form
+    @sign_in_form ||= User.new(email: 'JulijaT_D_L@gmail.com', pas: 'Parole')
+    @sign_in_form
+  end
+
+  class User
+    attr_reader :email, :pas, :pas1, :pas2, :projName
+    def initialize(args = {})
+      @email = args[:email]
+      @pas = args[:pas]
+      @pas1 = args[:pas1]
+      @pas2 = args[:pas2]
+      @projName = args[:projName]
+    end
   end
 end
-
-class User
-  attr_reader :email, :password, :project_name
-  def initialize(email:, password:)
-    @email = email
-    @password = password
-    @project_name = 'UIauto' + DateTime.now.strftime('%Q')
-  end
-end
-
-=======
-
-end
->>>>>>> 37bf0fb56a2394df6eadaef4b2e58b86649e3c32
